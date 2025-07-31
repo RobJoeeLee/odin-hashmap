@@ -159,3 +159,45 @@ class HashMap {
     return entriesArray;
   }
 }
+
+const map = new HashMap();
+
+// Set values
+map.set("apple", "red");
+map.set("banana", "yellow");
+map.set("grape", "purple");
+map.set("lemon", "yellow");
+
+// Get values
+console.log(map.get("apple")); // "red"
+console.log(map.get("banana")); // "yellow"
+console.log(map.get("grape")); // "purple"
+console.log(map.get("lemon")); // "yellow"
+console.log(map.get("pear")); // null (not found)
+
+// Check existence
+console.log(map.has("apple")); // true
+console.log(map.has("pear")); // false
+
+// Remove
+console.log(map.remove("banana")); // true
+console.log(map.get("banana")); // null
+console.log(map.length()); // 3
+
+// Keys, values, entries
+console.log(map.keys()); // ['apple', 'grape', 'lemon']
+console.log(map.values()); // ['red', 'purple', 'yellow']
+console.log(map.entries()); // [['apple','red'], ['grape','purple'], ['lemon','yellow']]
+
+// Resize test
+for (let i = 0; i < 20; i++) {
+  map.set("key" + i, "value" + i);
+}
+console.log(map.capacity); // Should be doubled at least once (e.g. 32 or 64)
+console.log(map.length()); // Should match number of items
+console.log(map.get("key5")); // Should return "value5"
+
+// Clear
+map.clear();
+console.log(map.length()); // 0
+console.log(map.get("apple")); // null
