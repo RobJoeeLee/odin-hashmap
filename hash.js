@@ -146,4 +146,16 @@ class HashMap {
 
     return valuesArray;
   }
+
+  entries() {
+    const entriesArray = [];
+
+    for (const bucket of this.buckets) {
+      for (const pair of bucket) {
+        entriesArray.push(pair);
+      }
+    }
+
+    return entriesArray;
+  }
 }
